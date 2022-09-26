@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Queries Sandbox</title>
+    <style>
+        .mq-demo{
+            height: 300px;
+        }
+
+        /*@media (min-width:600px){
+            .mq-demo{
+                background-color: red;
+            }
+        }
+
+        @media (min-width:800px){
+            .mq-demo{
+                background-color: green;
+            }
+        }*/
+
+        @media (orientation: landscape){
+            .mq-demo{
+                background-color: red;
+            }
+        }
+
+        @media (orientation: portrait){
+            .mq-demo{
+                background-color: green;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Media Query Sanbox</h1>
+    <div class="mq-demo">
+        box
+    </div>
+</body>
+</html>
