@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Offline Demo</title>
+    <style>
+        header {
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        /*Otra opcion*/
+        .headerContent {
+            /*flex:1;*/
+        }
+    </style>
+    <script>
+        const URL_API = "https://fakestoreapi.com/products";
+
+        async function fetchApiData() {
+            let data = [];
+            /*fetch(URL_API)
+                .then((resp) => (resp.json()))
+                .then((body) => {
+                    data = body
+                    alert(JSON.stringify(data));
+                }
+                );*/
+            if (navigator.onLine) {
+                const body = await (await fetch(URL_API)).json();
+                data = body;
+                localStorage.setItem("data", JSON.stringify(data));
+            } else {
+                data = JSON.parse(localStorage.getItem("data"));
+            }
+
+            let ul = document.querySelector("ul");
+            for (let item of data) {
+                let li = document.createElement("li");
+                li.innerHTML = item.title;
+                ul.append(li);
+            }
+
+        }
+
+        function updateOnlineStatus() {
+            let onlineStatus = document.querySelector(".onlineStatus");
+            onlineStatus.innerHTML = navigator.onLine ? "<h3>Online</h3>" : "<h3>Offline</h3>";
+            onlineStatus.style.color = navigator.onLine ? "green" : "red";
+            /*if (navigator.onLine){
+                onlineStatus.innerHTML = "<h3>Online</h3>";
+                onlineStatus.style.color = "green";
+            } else {
+                onlineStatus.innerHTML = "<h3>Offline</h3>";
+                onlineStatus.style.color = "red";
+            }*/
+        }
+
+        window.addEventListener("load", () => { updateOnlineStatus() });
+        window.addEventListener("online", () => { updateOnlineStatus() })
+        window.addEventListener("offline", () => { updateOnlineStatus() })
+    </script>
+</head>
+
+<body>
+    <header>
+        <div class="headerContent"></div>
+        <div class="onlineStatus">
+        </div>
+    </header>
+    <main>
+        <ul>
+
+        </ul>
+        <button onclick="fetchApiData()">Recuperar Lista</button>
+    </main>
+</body>
+
+</html>
