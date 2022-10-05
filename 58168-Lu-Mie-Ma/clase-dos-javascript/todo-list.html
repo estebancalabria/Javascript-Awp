@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+</head>
+
+<body>
+    <header class="alert alert-info text-center">
+        <h1>La mejor Todo List</h1>
+    </header>
+    <main class="container">
+        <ul class="list-group">
+            <li class="list-group-item active">Mis Tareas</li>
+            <li class="list-group-item">
+                Tomar Cafe
+                <button class="btn btn-danger float-end">&#128465;</button>
+                <script>
+                    const btnEliminar = document.querySelector("button.btn-danger");
+                    btnEliminar.addEventListener("click", (evt)=>{
+                        //evt.target
+                        //let btn = evt.currentTarget;
+                        //alert(btn.parentNode);
+                        document.querySelector("ul").removeChild(evt.target.parentNode);
+                    })
+                </script>
+            </li>
+            <li class="list-group-item">
+                <div class="input-group">
+                    <input class="form-control" id="txtTarea" type="text" placeholder="Nueva tarea..." />
+                    <button class="btn btn-outline-success" type="button">
+                        +
+                    </button>
+                </div>
+            </li>
+        </ul>
+    </main>
+    <script>
+        const btnAgregar = document.querySelector("div.input-group>button");
+        //btnAgregar.onclick = () => {alert("sdsdds");}
+        btnAgregar.addEventListener("click",()=>{ 
+            const txtTarea = document.getElementById("txtTarea");
+            const nombreTarea = txtTarea.value;
+            if (nombreTarea.length>0){
+                const ul = document.querySelectorAll(".list-group")[0]; //alternativa
+                
+                const li = document.createElement("li");
+
+                const btnEliminar = document.createElement("button");
+                btnEliminar.innerHTML = "&#128465;";
+                btnEliminar.className = "btn btn-danger float-end";
+                btnEliminar.addEventListener("click",()=>{
+                    li.style.transition = "opacity 1s ease";
+                    li.style.opacity = 0;
+                    setTimeout(()=>{ul.removeChild(li)}, 1000);
+                })
+
+                li.innerText = nombreTarea;
+                li.className = "list-group-item";
+                li.appendChild(btnEliminar)
+
+                //Tambien puedo clonar un nodo
+                //const li = ul.querySelector("li").cloneNode();
+                //li.innerText = nombreTarea;
+
+                //Distintas alternativas de manipular el dom
+                //const titleLi = document.querySelector(".list-group-item.active");
+                //const titleLi = ul.querySelector("li");
+                //ul.insertBefore(li, titleLi.nextSibling);
+                ul.insertBefore(li, ul.querySelector("li").nextSibling);
+            }
+        })
+    </script> 
+</body>
+
+</html>
