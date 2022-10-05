@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="apple-touch-icon" href="./images/icon-192x192.png">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#35f6d7" />
+    <title>PWA Hello World</title>
+    <script>
+        navigator.serviceWorker
+            && navigator.serviceWorker.register("./sw.js")
+                .then((reg) => { console.log("SW Registered") })
+    </script>
+</head>
+
+<body>
+    <h1>Hola mundo PWA</h1>
+</body>
+
+</html>

@@ -1,0 +1,12 @@
+{
+    "liveServer.settings.port": 5501,
+    "liveServer.settings.root": "/",
+    "liveServer.settings.CustomBrowser": "chrome",
+    "liveServer.settings.https": {
+      "enable": true,
+      "cert": "C:\\Cursos\\Javascript-Awp\\58168-Lu-Mie-Ma\\clase-cuatro-manifest\\cert\\localhost.pem",
+      "key": "C:\\Cursos\\Javascript-Awp\\58168-Lu-Mie-Ma\\clase-cuatro-manifest\\cert\\localhost.key",
+      "passphrase": "holaquetal"
+    }
+}
+  
