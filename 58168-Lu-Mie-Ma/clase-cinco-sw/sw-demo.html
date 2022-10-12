@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="node_modules/axios/dist/axios.js"></script>
+    <script>
+        //alert(this); //El objeto Window
+        /*function Persona(){
+            this.nombre = "Esteban"; //Es un object\
+            alert(this);
+        }
+        let p = new Persona();*/
+        (navigator)
+            && (navigator.serviceWorker)
+            && navigator.serviceWorker.register("sw.js").then((evt) => {
+                console.log("PAGE : Service Worker Registrado", evt);
+            }).catch((err) => {
+                console.log("PAGE : Error al registrar el SW", err);
+            })
+    </script>
+</head>
+
+<body>
+    <h1>Ejemplo de Uso de Service Worker</h1>
+    <button id="btnFetch">Hacer un fetch</button>
+    <script>
+        document.querySelector("#btnFetch").addEventListener("click", () => {
+            /*fetch("https://rickandmortyapi.com/api/character/1")
+                .then((r) => (r.json()))
+                    .then(body => { alert(JSON.stringify(body)) })*/
+            //con Axios...
+            /*axios.get("https://rickandmortyapi.com/api/character/1")
+               .then((resp=>{ alert(JSON.stringify(resp.data))}))*/
+            axios.get("dummyurl")
+            .then((resp=>{ alert(JSON.stringify(resp.data))})); 
+        });
+    </script>
+</body>
+
+</html>
