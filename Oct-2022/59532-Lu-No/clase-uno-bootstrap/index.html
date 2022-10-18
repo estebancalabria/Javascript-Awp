@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        .box {
+            height: 200px;
+        }
+    </style>
+</head>
+<body>
+    <header class="alert alert-primary text-center">
+        <h1 class="display-1">Bienvenidos a AWP</h1>
+    </header>
+    <div>
+        <div>Ancho : <span id="alto">0</span></div>
+        <div>Alto : <span id="ancho">0</span></div>
+        <script>
+            document.getElementById("alto").innerHTML = window.innerHeight;
+            document.querySelector("#ancho").innerHTML = window.innerWidth;
+            window.addEventListener("resize", ()=>{
+                document.getElementById("alto").innerHTML = window.innerHeight;
+                document.querySelector("#ancho").innerHTML = window.innerWidth;
+            });
+        </script>
+    </div>
+    <div class="container row mx-auto">
+        <div class="box bg-primary col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            Caja 1
+        </div>
+        <div class="box bg-success col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            Caja 2
+        </div>
+        <div class="box bg-secondary col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            Caja 3
+        </div>
+    </div>
+</body>
+</html>

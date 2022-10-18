@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            height: 200px;
+        }
+
+        @media only screen and (min-width: 901px) {
+            .box{
+                background-color: yellow;
+            }
+        }
+
+        @media only screen and (max-width: 900px) {
+            .box{
+                background-color: green;
+            }
+        }
+
+        @media only screen and (max-width: 700px) {
+            .box{
+                background-color: red;
+            }
+        }
+
+        .orientedBox{
+            height: 300px;
+        }
+
+        @media screen and (orientation:landscape) {
+            .orientedBox{
+                background-color: red;
+            }
+        }
+
+        @media screen and (orientation:portrait) {
+            .orientedBox{
+                background-color: yellow;
+            }
+        }
+
+
+    </style>
+</head>
+<body>
+    <div class="box">
+        Box
+    </div>
+
+    <div class="orientedBox">
+        Segun Orientacion
+        <h3 id="orientacion"></h3>
+        <h3 id="angulo"></h3>
+    </div>
+    
+    <script>
+        document.querySelector("#orientacion").innerHTML = screen.orientation.type;
+        window.addEventListener("orientationchange", (evt)=>{
+            document.querySelector("#orientacion").innerHTML = screen.orientation.type;
+            document.querySelector("#angulo").innerHTML = screen.orientation.angle;
+        });
+    </script>
+
+
+</body>
+</html>
