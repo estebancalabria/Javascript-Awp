@@ -38,7 +38,8 @@ self.addEventListener("fetch", (evt)=>{
             var match = await cache.match(evt.request);
             if (!match){
                 let resp = await fetch(evt.request);
-                cache.put(evt.request, resp);
+                let clonedResp = resp.clone();
+                cache.put(evt.request, clonedResp);
                 return resp
             }else{
                 return match;
