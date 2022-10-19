@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        navigator.serviceWorker 
+        && navigator.serviceWorker.register("sw.js").then((evt)=>{
+            console.log("Service Worker Instalado");
+        })
+    </script>
+</head>
+<body>
+    <Button>Hacer LLamada a Api</Button>
+    <ul></ul>
+    <script>
+        let button = document.querySelector("button");
+        button.addEventListener("click", ()=>{
+            let ul = document.querySelector("ul");
+            ul.innerHTML = "";
+            
+            let li = document.createElement("li");
+            li.innerHTML = "Cargando productos..."
+            ul.appendChild(li);
+
+            fetch("http://localhost:3000/api/productos")
+            .then((resp)=>(resp.json()))
+            .then((body)=>{
+                ul.innerHTML = "";
+                for (let prod of body){
+                    let li = document.createElement("li");
+                    li.innerHTML = prod.nombre;
+                    ul.appendChild(li);
+                }
+            })
+        })
+    </script>
+</body>
+</html>
