@@ -1,0 +1,12 @@
+
+{
+    "type": "object",
+  
+    "properties": {
+      "OpenHelpx": {
+        "title": "Open helpx tab.",
+        "description": "If set to false then it won't open helpx.",
+        "type": "string"
+      }
+    }
+  }

@@ -1,0 +1,13 @@
+{
+   /* 
+   "liveServer.settings.port": 5501,
+    "liveServer.settings.root": "/",
+    "liveServer.settings.https": {
+        "enable": true,
+        "cert": "C:\\Cursos\\Javascript-Awp\\58168-Lu-Mie-Ma\\clase-ocho-https\\cert\\micertificado.pem",
+        "key": "C:\\Cursos\\Javascript-Awp\\58168-Lu-Mie-Ma\\clase-ocho-https\\cert\\miclave.key",
+        "passphrase": "12345"
+    },
+    "liveServer.settings.AdvanceCustomBrowserCmdLine": "chrome --user-data-dir=c:/temp/chrome --ignore-certificate-errors --unsafe-treat-insecure-origin-as-secure=https://127.0.0.1:5501"
+    */
+}

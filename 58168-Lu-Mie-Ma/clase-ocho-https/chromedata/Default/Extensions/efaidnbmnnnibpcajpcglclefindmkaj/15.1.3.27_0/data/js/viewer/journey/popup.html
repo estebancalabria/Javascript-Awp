@@ -1,0 +1,124 @@
+<!--
+/*************************************************************************
+*
+* ADOBE CONFIDENTIAL
+* ___________________
+*
+*  Copyright 2020 Adobe Systems Incorporated
+*  All Rights Reserved.
+*
+* NOTICE:  All information contained herein is, and remains
+* the property of Adobe Systems Incorporated and its suppliers,
+* if any.  The intellectual and technical concepts contained
+* herein are proprietary to Adobe Systems Incorporated and its
+* suppliers and may be covered by U.S. and Foreign Patents,
+* patents in process, and are protected by trade secret or copyright law.
+* Dissemination of this information or reproduction of this material
+* is strictly forbidden unless prior written permission is obtained
+* from Adobe Systems Incorporated.
+**************************************************************************/
+-->
+<html>
+
+<head>
+    <link href="./popup.css" type="text/css" rel="stylesheet" />
+    <link href="./../../../css/core.css" type="text/css" rel="stylesheet" />
+    <script src="../../libs/jquery-3.1.1.min.js"></script>
+    <script src="./../../content-privateApi.js"></script>
+    <script src="./../../content-util.js"></script>
+    <script src="./../../analytics.js"></script>
+    <script src="./../../settings.js"></script>
+    <script src="./popup.js"></script>
+</head>
+
+<body>
+    <div id="popup1" class="hidden">
+        <div class="fullscreen-overlay"></div>
+        <div class = "fteDefault image ">
+            <img src="../../../images/S_Illu_AcrobatStayProductiveWithAdobe_320x200.svg">
+            <div class="headingText">
+                <div class="content-slide">
+                    <h3 class="translate" id="pdfOwnershipExploreAcrobat"></h3>
+                </div>
+
+                <div class="content-body translate" id="pdfOwnershipPromptContentNew"></div>
+
+                <div class="action-buttons">
+                    <button id="acc-cancel"
+                        class="type-spectrum-Button type-spectrum-Button--primary type-spectrum-Button--cancel">
+                        <span class="type-spectrum-Button-label translate translateTitle"
+                            id="pdfOwnershipPromptCancel"></span>
+                    </button>
+                    <button id="acc-ok" class="type-spectrum-Button type-spectrum-Button--cta">
+                        <span class="type-spectrum-Button-label translate translateTitle" id="pdfOwnershipPromptOk"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="fullscreen-fte" class="hidden">
+        <div class="fullscreen-overlay"></div>
+        <div class="fteFullScreen image fullimage">
+            <img src="../../../images/s_chrome_ext_card_newuser_option2_img.png" class ="fte-image">
+            <div class="fullscreenContent">
+                <div class="fullscreen-content-header translate" id="pdfOwnershipExploreAcrobatFullScreen"></div>
+                <div class="fullscreen-content-body translate" id="pdfOwnershipCenterFTEbody"></div>
+                <div class="fullscreen-action-Buttons-fte">
+                    <button id="fte-slider-acc-cancel"
+                        class="type-spectrum-Button type-spectrum-Button--primary type-spectrum-Button--cancel">
+                        <span class="type-spectrum-Button-label translate translateTitle" id="pdfOwnershipCenterCancelBtn"></span>
+                    </button>
+                    <button id="fte-slider-acc-ok" class="type-spectrum-Button type-spectrum-Button--cta">
+                        <span class="type-spectrum-Button-label translate translateTitle" id="pdfOwnershipCenterFTEConfirmBtn"></span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="slider" class="fteSlider image hidden">
+        <div class = "slider-icon">
+            <img class="icon" src="../../../images/acrobat_dc_appicon_48.png" alt="">
+        </div>
+        <div id="slideWrap">
+            <div class="slides">
+                <img src="../../../images/s_chrome_ext_card_upgradeuser_option2_img1_1x.png" class ="slider-image" alt="">
+                <div class="headingText">
+                    <div class="fte-slider-content-slide">
+                        <h3 class="translate" id="pdfOwnershipSlide1Heading"></h3>
+                    </div>
+                    <div class="fte-slider-content-body translate" id="pdfOwnershipSlider1content"></div>
+                </div>
+            </div>
+            <div class="slides">
+                <img src="../../../images/s_chrome_ext_card_upgradeuser_option2_img2_1x.png" alt="">
+                <div class="headingText">
+                    <div class="fte-slider-content-slide">
+                        <h3 class="translate" id="pdfOwnershipSlide2Heading"></h3>
+                    </div>
+                    <div class="fte-slider-content-body translate" id="pdfOwnershipSlider2content"></div>
+                </div>
+            </div>
+            <div class="slides">
+                <img src="../../../images/s_chrome_ext_card_upgradeuser_option2_img3_1x.png" alt="">
+                <div class="headingText">
+                    <div class="fte-slider-content-slide">
+                        <h3 class="translate" id="pdfOwnershipSlide3Heading"></h3>
+                    </div>
+                    <div class="fte-slider-content-body translate" id="pdfOwnershipSlider3content"></div>
+                </div>
+            </div>
+            
+        </div>
+        <div class="action-Buttons-fte">
+            <button id="fte-slider-acc-cancel"
+                class="type-spectrum-Button type-spectrum-Button--primary type-spectrum-Button--cancel">
+                <span class="type-spectrum-Button-label translate translateTitle" id="pdfOwnershipSliderCancelBtn"></span>
+            </button>
+            <button id="fte-slider-acc-ok" class="type-spectrum-Button type-spectrum-Button--cta">
+                <span class="type-spectrum-Button-label translate translateTitle" id="pdfOwnershipSliderConfirmBtn"></span>
+            </button>
+        </div>
+    </div>
+</body>
+
+</html>

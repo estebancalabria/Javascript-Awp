@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        navigator.serviceWorker 
+        && navigator.serviceWorker.register("sw.js").then((reg)=>{
+            console.log("PAGE", "SW Instalado");
+        });
+
+        navigator.serviceWorker.addEventListener("message",(mensaje)=>{
+            let ul = document.querySelector("ul");
+            let li = document.createElement("li");
+            li.innerHTML = mensaje.msg;
+            ul.appendChild(li);
+        })
+    </script>
+</head>
+<body>
+    <h1>Demo HTTPS</h1>
+    <ul>
+
+    </ul>
+</body>
+</html>
