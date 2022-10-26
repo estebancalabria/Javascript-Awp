@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Awesome Todo-List</title>
+    <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="./node_modules/sweetalert2/dist/sweetalert2.all.js"></script>
+    <script src="./node_modules/jquery/dist/jquery.js"></script>
+</head>
+
+<body>
+    <header class="alert alert-info text-center">
+        <h1>
+            &#9999;&#65039;
+            EducacionIT Awesome Todo-List
+            &#9999;&#65039;
+        </h1>
+    </header>
+    <main>
+        <ul class="list-group w-50 mx-auto">
+            <li class="list-group-item active">Mi Lista de Pendientes </li>
+            <li class="list-group-item">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Nombre Tarea Nueva..." />
+                    <button id="btnAgregar" class="btn btn-outline-primary">
+                        +
+                    </button>
+                </div>
+            </li>
+            <!--
+            <li class="list-group-item">
+                <input type="checkbox" />
+                <span>Hacer curso PWA</span>
+                <button class="btn btn-danger float-end">
+                    &#128465;&#65039;
+                </button>
+            </li>
+            -->
+        </ul>
+    </main>
+    <script>
+        $(document).ready(() => {
+            $("#btnAgregar").click(() => {
+                let tareaNueva = $(".list-group-item>.input-group>input").val();
+
+                (tareaNueva.length > 0)
+                    && $("ul").append(`
+                    <li class="list-group-item">
+                        <input type="checkbox"  />
+                        <span>${tareaNueva}</span>
+                        <button class="btn btn-danger float-end">
+                            &#128465;&#65039;
+                        </button>
+                    </li>
+                `);
+
+                $(".list-group-item>.input-group>input").val("");
+
+                $(".btn-danger").click((evt) => {
+                   Swal.fire({
+                        title: "Desea eliminar el elemento?",
+                        icon: "warning",
+                        showConfirmButton: true,
+                        showCancelButton: true
+                    }).then((resp) => {
+                        if (resp.isConfirmed) {
+                            const li = evt.target.parentElement;
+                            let ul = document.querySelector("ul");
+                            ul.removeChild(li);
+                        }
+                    })
+                });
+            })
+        })
+       /* function toggleTareaDone(evt) {
+             const tarea = evt.target.nextElementSibling;
+             tarea.classList.toggle("text-decoration-line-through")
+         }
+ 
+         function eliminarTarea(evt) {
+             Swal.fire({
+                 title:"Desea eliminar el elemento?",
+                 icon : "warning",
+                 showConfirmButton:true,
+                 showCancelButton:true
+             }).then((resp)=>{
+                 if (resp.isConfirmed){
+                         const li = evt.target.parentElement;
+                         let ul = document.querySelector("ul");
+                         ul.removeChild(li);
+                 }
+             })
+         }
+ 
+         //class="text-decoration-line-through"
+         /*const checks = document.querySelectorAll("input[type='checkbox']");
+         for (let check of checks) {
+             check.addEventListener("change", toggleTareaDone);
+         }
+ 
+         const btnEliminarArray = document.querySelectorAll("button.btn-danger");
+         for (let btnEliminar of btnEliminarArray) {
+             btnEliminar.addEventListener("click", eliminarTarea);
+         }*/
+
+        /*const btnAgregar = document.getElementById("btnAgregar");
+        //const btnAgregar = document.querySelector("#btnAgregar");
+        btnAgregar.addEventListener("click", () => {
+            let input = document.querySelector(".list-group-item>.input-group>input");
+            let tareaNueva = input.value;
+            if (tareaNueva.length > 0) {
+                let newLi = document.createElement('li');
+                newLi.className = "list-group-item";
+                newLi.innerHTML = `
+                    <input type="checkbox" onChange="toggleTareaDone(event)" />
+                    <span>${tareaNueva}</span>
+                    <button class="btn btn-danger float-end" onClick='eliminarTarea(event)'>
+                        &#128465;&#65039;
+                    </button>
+                `;
+                let ul = document.querySelector("ul");
+                const liInput = document.querySelector("#primerLi");
+                liInput.after(newLi);
+                input.value = "";
+            }
+        })*/
+    </script>
+</body>
+
+</html>

@@ -29,7 +29,7 @@ self.addEventListener("fetch", (evt) => {
     console.log("SW", "Fetch Event", evt.request);
 
     (!navigator.onLine) &&
-    evt.respondWith(
+    /*evt.respondWith(
         self.caches.open(CACHE_NAME).then((cache) => {
             return cache.match(evt.request)
             .then((match) => {
@@ -44,5 +44,15 @@ self.addEventListener("fetch", (evt) => {
 
             });
         })
-    );
+    );*/
+    evt.respondWith((async ()=>{
+        console.log("RespondWith");
+        var cache = await self.caches.open(CACHE_NAME);
+        var match = await cache.match(evt.request);
+        if (match){
+            return match;
+        }
+        var match3 = await cache.match("./images/Offline3.jpg");
+        return match3;
+    })());
 });

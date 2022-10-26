@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sw Comunication demo</title>
+    <link type="text/css" rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/fontawesome.css">
+    <script>
+        let sw = null;
+
+        function mostrarMensaje(msg) {
+            let ul = document.getElementById("mensajes");
+            let li = document.createElement("li");
+            li.innerHTML = `<b>[ ${msg.usuario} ]</b> ${msg.mensaje}`;
+            li.classList.add("list-group-item");
+            ((ul.children.length % 2) == 0) && (li.style.backgroundColor = "#EEEEEE");
+            ul.appendChild(li);
+        }
+
+        navigator.serviceWorker
+            && navigator.serviceWorker.register("sw.js").then((reg) => {
+                console.log("SW Registered");
+                //Esto me devuelve el service Worker Activo
+                sw = reg.active;
+
+                navigator.serviceWorker.addEventListener("message", (msg) => {
+                    mostrarMensaje(msg.data);
+                })
+            })
+    </script>
+</head>
+
+<body>
+    <header class="alert alert-info text-center">
+        <h1 class="display-3">Service Worker : Demo Comunicacion</h1>
+    </header>
+    <main class="container">
+        <i class="fas fa-user-alt fa-3x text-info"></i>
+        <div class="w-75 mx-auto">
+            <div style="height: 50vh; border:1px solid grey; border-radius: 5px; overflow: auto;">
+                <ul id="mensajes" class="list-group">
+
+                </ul>
+            </div>
+            <div class="mt-2">
+                <div class="input-group">
+                    <span id="userName" class="input-group-text">[UserName]</span>
+                    <input id="txtMensaje" type="text" class="form-control" placeholder="Ingrese su mensaje..." />
+                    <button id="btnSendMessage" class="btn btn-outline-primary">Enviar</button>
+                </div>
+            </div>
+        </div>
+    </main>
+    <script>
+        let btn = document.getElementById("btnSendMessage");
+        btn.addEventListener("click", () => {
+            //mostrarMensaje();
+            let txtMensaje = document.getElementById("txtMensaje");
+            (txtMensaje.value.length > 0) && sw && sw.postMessage({
+                usuario : document.getElementById("userName").innerHTML,
+                mensaje: txtMensaje.value
+            });
+            txtMensaje.value = "";
+        });
+
+        fetch("names.json")
+            .then((resp) => (resp.json()))
+            .then((body) => {
+                let nombreAzar = body.data[Math.floor(Math.random() * body.data.length - 1)]
+                document.getElementById("userName").innerHTML = nombreAzar;
+            })
+    </script>
+</body>
+
+</html>
