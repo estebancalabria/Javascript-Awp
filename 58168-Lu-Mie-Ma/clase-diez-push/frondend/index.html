@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Push Notifications Demo</title>
+    <script>
+
+        function urlB64ToUint8Array(base64String) {
+            const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
+            const base64 = (base64String + padding)
+                .replace(/\-/g, "+")
+                .replace(/_/g, "/");
+ 
+            const rawData = window.atob(base64);
+            const outputArray = new Uint8Array(rawData.length);
+ 
+            for (let i = 0; i < rawData.length; ++i) {
+                outputArray[i] = rawData.charCodeAt(i);
+            }
+            return outputArray;
+        }
+
+        var serviceWorkerRegistration = null;
+
+        navigator.serviceWorker
+            && navigator.serviceWorker.register("sw.js")
+                .then((reg) => {
+                    serviceWorkerRegistration = reg;
+                    console.log("Service Worker Registrdo")
+
+                    //Registro mi aplicacion el en servidor de google para que la misma reciba notificaciones push
+                    reg.pushManager.subscribe({
+                        userVisibleOnly:true,
+                        applicationServerKey: urlB64ToUint8Array("BHdxL2ZsTReNQGngdFZoF_WijAagWNhPWUFDlm0mecAyM5AXWtojecOC4Ad6oSRWM6iGTjJDme4hEmyqO3DYimE")
+                    }).then((sub)=>{
+                        console.log(sub);
+                        fetch("http://localhost:3000/registrar",{
+                            method:"POST",
+                            headers:{"Content-Type":"application/json"},
+                            body:JSON.stringify(sub)
+                        })
+                    });
+                });
+
+        window.addEventListener("load",()=>{
+            window.Notification.requestPermission().then((perm)=>{
+                document.querySelector("#not").innerHTML = perm;
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <h1>Probando notificaciones push!!!</h1>
+    <div>
+        <span>Notificaciones Push:</span><span id="not">Pidiendo permisos...</span>
+    </div>
+    <div>
+        <button id="mos">Mostrar Notificacion</button>
+        <script>
+            document.getElementById("mos").addEventListener("click", ()=>{
+                serviceWorkerRegistration.showNotification("Notificacion del cliente");
+                /*navigator.serviceWorker.getRegistration().then((reg)=>{
+                    serviceWorkerRegistration.showNotification("Notificacion del cliente");
+                })*/
+            })
+        </script>
+    </div>
+</body>
+
+</html>
