@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#9013fe">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="apple-touch-icon" href="img/base_icon.png">
+    <title>AWP Demo</title>
+    <script src="node_modules/sweetalert2/dist/sweetalert2.all.js"></script>
+    <script>
+        navigator.serviceWorker
+            && navigator.serviceWorker.register("sw.js").then((reg) => {
+                console.log("Service Worker Registrado")
+            })
+    </script>
+</head>
+
+<body>
+    <header class="alert alert-primary text-center">
+        <h1>PWA Sandbox</h1>
+    </header>
+
+    <button class="btn btn-primary" id="btnCallback">
+        Hacer un Callback
+    </button>
+    <script>
+        document.getElementById("btnCallback").addEventListener("click", () => {
+            setTimeout(() => {
+                Swal.fire("Ejecute dos Callback");
+            }, 2000);
+        })
+    </script>
+
+    <button class="btn btn-primary" id="btnDelayPromise">
+        Hacer un delay con una promesa
+    </button>
+    <script>
+        const delay = (ms) => {
+            //Una promesa es un objeto que recibe como parametro
+            //una funcion que a la vez recibe como parametro
+            //dos funciones
+            return new Promise((accept, reject) => {
+                setTimeout(accept, ms);
+            })
+        }
+        document.getElementById("btnDelayPromise").addEventListener("click", () => {
+            delay(1500).then(() => {
+                Swal.fire("Promesas", "Ejemplo Delay Promise", "success");
+            });
+        })
+    </script>
+
+    <button class="btn btn-primary" id="btnFetch">
+        Una promesa conocida por todos
+    </button>
+    <script>
+        document.getElementById("btnFetch").addEventListener("click", () => {
+            fetch("https://rickandmortyapi.com/api/character")
+                .then(resp => (resp.json()))
+                .then((body) => {
+                    Swal.fire(body.results[0].name)
+                })
+        });
+    </script>
+
+    <button class="btn btn-primary" id="btnFetchAsync">
+        La misma conocida con async/await
+    </button>
+    <script>
+        // Esto es una forma alternativa de manejar promesas
+        document.getElementById("btnFetchAsync").addEventListener("click", async ()=>{
+            let resp = await fetch("https://rickandmortyapi.com/api/character?1");
+            let body = await resp.json();
+            Swal.fire(body.results[0].name);
+        })
+    </script>
+
+    <button class="btn btn-primary" id="btnAsyncAwait">
+        Locura Async Await
+    </button>
+    <script>
+        const click =  (id) => ( new Promise((accept,reject)=>{
+            document.getElementById(id).addEventListener("click", accept);
+        }));
+
+        (async function runAsync(){
+            await click("btnAsyncAwait");
+            await delay(1000);
+            let resp = await fetch("https://rickandmortyapi.com/api/character?2");
+            let body = await resp.json();
+            Swal.fire(body.results[0].name);
+        })(); //Funcion auto Invocante
+
+    </script>
+
+    <button class="btn btn-primary" id="btnToSw">
+        Fetch Especial (Lo Intercepta SW)
+    </button>
+    <script>
+        (async ()=>{
+            await click("btnToSw");
+            let resp = await fetch("hellosw");
+            let body = await resp.json();
+            Swal.fire(body.mensaje);
+        })();
+    </script>
+</body>
+
+</html>

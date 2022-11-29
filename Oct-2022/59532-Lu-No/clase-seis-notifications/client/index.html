@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#e78a7a">
+    <title>Push Notifications Demo</title>
+    <link rel="apple-touch-icon" href="./img/icon-512x512.png" >
+    <link rel="manifest" href="manifest.json" >
+    <script>
+        function urlB64ToUint8Array(base64String) {
+            const padding = "=".repeat((4 - (base64String.length % 4)) % 4);
+            const base64 = (base64String + padding)
+                .replace(/\-/g, "+")
+                .replace(/_/g, "/");
+ 
+            const rawData = window.atob(base64);
+            const outputArray = new Uint8Array(rawData.length);
+ 
+            for (let i = 0; i < rawData.length; ++i) {
+                outputArray[i] = rawData.charCodeAt(i);
+            }
+            return outputArray;
+        }
+
+
+        let serviceWorkerRegistration = null;
+        
+        window.addEventListener("load",()=>{
+            navigator.serviceWorker.register("sw.js").then((reg)=>{
+                serviceWorkerRegistration = reg;
+                console.log("Service Worker Registrado");
+                window.Notification.requestPermission().then((accepted)=>{
+                    document.getElementById("notificationStatus").innerHTML = accepted;
+                });
+
+                reg.pushManager.subscribe({
+                    userVisibleOnly : true,
+                    applicationServerKey : urlB64ToUint8Array("BDVfCkRd43_q1HyA7Uq0k54_iV6qaiL6c5utEq-3EqaQ6fmo1Qi0GqpAIlCPlDV_UM4h1c2sWhnXFaRmDepJuCQ")
+                }).then((subs)=>{
+                    console.log("Registrado en server push", subs);
+                    fetch("http://localhost:3000/subscribe",{
+                        method:"POST",
+                        headers : { "Content-Type" : "application/json"},
+                        body : JSON.stringify(subs)
+                    });
+                })
+
+            })  
+        })
+    </script>
+</head>
+<body>
+    <div>
+        Estado Notificaciones : 
+        <span id="notificationStatus"> [Sin Solicitar] </span>
+        <button id="btnSendNotification">
+            Mandar Notificacion
+        </button>
+        <script>
+            document.getElementById("btnSendNotification").addEventListener("click",()=>{
+                serviceWorkerRegistration.showNotification("Notificacion Push de la pagina",{
+                    vibrate : true,
+                    body : "No te pierdas esta notificacion",
+                    image : "./img/noti.png"
+                });
+            })
+        </script>
+    </div>
+</body>
+</html>
