@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive con bootstrap</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        .box{
+            height: 200px;
+        }
+
+        .verde{
+            background-color: green;
+        }
+
+        .rojo{
+            background-color: red;
+        }
+
+        .azul{
+            background-color: blue;
+        }
+    </style>
+    <script>
+        window.addEventListener("resize",()=>{
+            document.querySelectorAll(".box").forEach((div)=>{
+                div.innerHTML = window.innerWidth;
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="row">
+        <div class="box verde col-sm-12 col-md-6 col-xl-4"></div>
+        <div class="box rojo col-sm-12 col-md-6 col-xl-4"></div>
+        <div class="box azul col-sm-12 col-md-12 col-xl-4"></div>
+    </div>
+</body>
+</html>

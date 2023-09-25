@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Media Queries</title>
+    <style>
+        .mq{
+            height: 300px;
+        }
+
+        /*@media (orientation: landscape) {
+            .mq{
+                background-color: blue;
+            }
+        }
+
+        @media (orientation: portrait) {
+            .mq{
+                background-color: red;
+            }
+            
+        }*/
+
+        @media (max-width:600px) {
+            .mq{
+                background-color:red;
+            }
+        }
+
+        @media (min-width:600px) {
+            .mq{
+                background-color:yellow;
+            }
+        }
+
+        @media (min-width:800px) {
+            .mq{
+                background-color:green;
+            }
+        }
+    </style>
+    <script>
+        window.addEventListener("resize", ()=>{
+            document.querySelector(".mq").innerHTML = `El ancho de la pantalla es ${window.innerWidth}`;
+        })
+    </script>
+</head>
+<body>
+    <h1>Ejemplo de uso de los mediaqueries</h1>
+    <div class="mq">
+
+    </div>
+</body>
+</html>
