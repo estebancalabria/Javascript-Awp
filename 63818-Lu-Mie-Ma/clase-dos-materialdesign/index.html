@@ -18,6 +18,28 @@
             min-height: 100px;
 
         }
+
+        /* Variables de CSS */
+        :root{
+            --desktop-width : 600px;
+            --fondo : lightgrey;
+        } 
+
+        body{
+            background-color: var(--fondo);
+        }
+
+        @media ( width >= 600px) {
+            .box2 {
+                background-color: red;
+            }
+        }
+
+        @media (width <600px) {
+            .box2 {
+                background-color: green;
+            }
+        }
     </style>
 </head>
 
@@ -27,8 +49,8 @@
     </header>
     <main class="container">
         <div class="row">
-            <div class="box grey col s12 m6 l3">1</div>
-            <div class="box red col s12 m6 l3">
+            <div class="box2 col s12 m6 l3">1</div>
+            <div class="box col s12 m6 l3">
                 <img class="responsive-img" src="https://thispersondoesnotexist.com/" alt="" />
             </div>
             <div class="box green col s12 m6 l3">3</div>
@@ -44,8 +66,31 @@
                     <label for="apelido">Apellido:</label>
                     <input id="apellido" type="text" />
                 </div>
-                
+
             </form>
+        </div>
+        <div>
+            <table class="responsive-table">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Apellido`</th>
+                        <th>Direccion</th>
+                        <th>Telefono</th>
+                        <th>Descripcion</th>
+                        <th>Nombre</th>
+                        <th>Apellido`</th>
+                        <th>Direccion</th>
+                        <th>Telefono</th>
+                        <th>Descripcion</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Direccion</th>
+                        <th>Telefono</th>
+                        <th>Descripcion</th>
+                    </tr>
+                </thead>
+            </table>
         </div>
     </main>
 
