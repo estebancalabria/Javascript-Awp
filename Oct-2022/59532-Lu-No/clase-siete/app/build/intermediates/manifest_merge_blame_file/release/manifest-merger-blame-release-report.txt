@@ -1,0 +1,283 @@
+1<?xml version="1.0" encoding="utf-8"?>
+2<!--
+3    Copyright 2019 Google Inc. All Rights Reserved.
+4
+5     Licensed under the Apache License, Version 2.0 (the "License");
+6     you may not use this file except in compliance with the License.
+7     You may obtain a copy of the License at
+8
+9         http://www.apache.org/licenses/LICENSE-2.0
+10
+11     Unless required by applicable law or agreed to in writing, software
+12     distributed under the License is distributed on an "AS IS" BASIS,
+13     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+14     See the License for the specific language governing permissions and
+15     limitations under the License.
+16-->
+17<!--
+18 The "package" attribute is rewritten by the Gradle build with the value of applicationId.
+19     It is still required here, as it is used to derive paths, for instance when referring
+20     to an Activity by ".MyActivity" instead of the full name. If more Activities are added to the
+21     application, the package attribute will need to reflect the correct path in order to use
+22     the abbreviated format.
+23-->
+24<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+25    package="localhost_5500.twa"
+26    android:versionCode="1"
+27    android:versionName="1" >
+28
+29    <uses-sdk
+30        android:minSdkVersion="19"
+30-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml
+31        android:targetSdkVersion="31" />
+31-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml
+32
+33    <queries>
+33-->[com.google.androidbrowserhelper:androidbrowserhelper:2.4.0] C:\Users\esteb\.gradle\caches\transforms-2\files-2.1\2a4780e5ae3e94fb64dd0623d9799b3d\androidbrowserhelper-2.4.0\AndroidManifest.xml:26:5-34:15
+34        <intent>
+34-->[com.google.androidbrowserhelper:androidbrowserhelper:2.4.0] C:\Users\esteb\.gradle\caches\transforms-2\files-2.1\2a4780e5ae3e94fb64dd0623d9799b3d\androidbrowserhelper-2.4.0\AndroidManifest.xml:27:9-33:18
+35            <action android:name="android.intent.action.VIEW" />
+35-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:134:17-68
+35-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:134:25-66
+36
+37            <category android:name="android.intent.category.BROWSABLE" />
+37-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:136:17-77
+37-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:136:27-75
+38
+39            <data android:scheme="https" />
+39-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:137:17-138:54
+39-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:137:23-45
+40        </intent>
+41    </queries>
+42
+43    <application
+43-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:33:5-177:19
+44        android:name="localhost_5500.twa.Application"
+44-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:34:9-35
+45        android:allowBackup="true"
+45-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:35:9-35
+46        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+46-->[androidx.core:core:1.1.0] C:\Users\esteb\.gradle\caches\transforms-2\files-2.1\e601daed4ba62929db8b322b2974c8f8\core-1.1.0\AndroidManifest.xml:24:18-86
+47        android:icon="@mipmap/ic_launcher"
+47-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:36:9-43
+48        android:label="@string/appName"
+48-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:37:9-40
+49        android:manageSpaceActivity="com.google.androidbrowserhelper.trusted.ManageDataLauncherActivity"
+49-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:39:9-105
+50        android:supportsRtl="true"
+50-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:41:9-35
+51        android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+51-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:42:9-68
+52        <meta-data
+52-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:44:9-46:58
+53            android:name="asset_statements"
+53-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:45:13-44
+54            android:resource="@string/assetStatements" />
+54-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:46:13-55
+55        <meta-data
+55-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:49:13-51:58
+56            android:name="web_manifest_url"
+56-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:50:17-48
+57            android:value="@string/webManifestUrl" />
+57-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:51:17-55
+58        <meta-data
+58-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:54:9-56:52
+59            android:name="twa_generator"
+59-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:55:13-41
+60            android:value="@string/generatorApp" />
+60-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:56:13-49
+61
+62        <activity android:name="com.google.androidbrowserhelper.trusted.ManageDataLauncherActivity" >
+62-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:63:13-67:24
+62-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:63:23-104
+63            <meta-data
+63-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:64:13-66:53
+64                android:name="android.support.customtabs.trusted.MANAGE_SPACE_URL"
+64-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:65:17-83
+65                android:value="@string/launchUrl" />
+65-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:66:17-50
+66        </activity>
+67        <activity
+67-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:70:9-142:20
+68            android:name="localhost_5500.twa.LauncherActivity"
+68-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:70:19-50
+69            android:alwaysRetainTaskState="true"
+69-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:71:13-49
+70            android:exported="true"
+70-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:73:13-36
+71            android:label="@string/launcherName" >
+71-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:72:13-49
+72            <meta-data
+72-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:74:13-75:53
+73                android:name="android.support.customtabs.trusted.DEFAULT_URL"
+73-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:74:24-85
+74                android:value="@string/launchUrl" />
+74-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:75:17-50
+75            <meta-data
+75-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:77:13-79:58
+76                android:name="android.support.customtabs.trusted.STATUS_BAR_COLOR"
+76-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:78:17-83
+77                android:resource="@color/colorPrimary" />
+77-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:79:17-55
+78            <meta-data
+78-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:81:13-83:61
+79                android:name="android.support.customtabs.trusted.NAVIGATION_BAR_COLOR"
+79-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:82:17-87
+80                android:resource="@color/navigationColor" />
+80-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:83:17-58
+81            <meta-data
+81-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:85:13-87:65
+82                android:name="android.support.customtabs.trusted.NAVIGATION_BAR_COLOR_DARK"
+82-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:86:17-92
+83                android:resource="@color/navigationColorDark" />
+83-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:87:17-62
+84            <meta-data
+84-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:89:13-91:68
+85                android:name="androix.browser.trusted.NAVIGATION_BAR_DIVIDER_COLOR"
+85-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:90:17-84
+86                android:resource="@color/navigationDividerColor" />
+86-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:91:17-65
+87            <meta-data
+87-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:93:13-95:72
+88                android:name="androix.browser.trusted.NAVIGATION_BAR_DIVIDER_COLOR_DARK"
+88-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:94:17-89
+89                android:resource="@color/navigationDividerColorDark" />
+89-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:95:17-69
+90            <meta-data
+90-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:97:13-98:54
+91                android:name="android.support.customtabs.trusted.SPLASH_IMAGE_DRAWABLE"
+91-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:97:24-95
+92                android:resource="@drawable/splash" />
+92-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:98:17-52
+93            <meta-data
+93-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:100:13-101:60
+94                android:name="android.support.customtabs.trusted.SPLASH_SCREEN_BACKGROUND_COLOR"
+94-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:100:24-104
+95                android:resource="@color/backgroundColor" />
+95-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:101:17-58
+96            <meta-data
+96-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:103:13-104:71
+97                android:name="android.support.customtabs.trusted.SPLASH_SCREEN_FADE_OUT_DURATION"
+97-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:103:24-105
+98                android:value="@integer/splashScreenFadeOutDuration" />
+98-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:104:17-69
+99            <meta-data
+99-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:106:13-107:60
+100                android:name="android.support.customtabs.trusted.FILE_PROVIDER_AUTHORITY"
+100-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:106:24-97
+101                android:value="@string/providerAuthority" />
+101-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:107:17-58
+102            <meta-data
+102-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:109:13-97
+103                android:name="android.app.shortcuts"
+103-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:109:24-60
+104                android:resource="@xml/shortcuts" />
+104-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:109:61-94
+105            <meta-data
+105-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:111:13-112:56
+106                android:name="android.support.customtabs.trusted.FALLBACK_STRATEGY"
+106-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:111:24-91
+107                android:value="@string/fallbackType" />
+107-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:112:17-53
+108            <meta-data
+108-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:117:13-118:45
+109                android:name="android.support.customtabs.trusted.DISPLAY_MODE"
+109-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:117:24-86
+110                android:value="immersive" />
+110-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:118:17-42
+111            <meta-data
+111-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:121:13-122:54
+112                android:name="android.support.customtabs.trusted.SCREEN_ORIENTATION"
+112-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:121:24-92
+113                android:value="@string/orientation" />
+113-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:122:17-52
+114
+115            <intent-filter>
+115-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:128:13-131:29
+116                <action android:name="android.intent.action.MAIN" />
+116-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:129:17-69
+116-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:129:25-66
+117
+118                <category android:name="android.intent.category.LAUNCHER" />
+118-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:130:17-77
+118-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:130:27-74
+119            </intent-filter>
+120            <intent-filter android:autoVerify="true" >
+120-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:133:13-139:29
+120-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:133:28-53
+121                <action android:name="android.intent.action.VIEW" />
+121-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:134:17-68
+121-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:134:25-66
+122
+123                <category android:name="android.intent.category.DEFAULT" />
+123-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:135:17-76
+123-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:135:27-73
+124                <category android:name="android.intent.category.BROWSABLE" />
+124-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:136:17-77
+124-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:136:27-75
+125
+126                <data
+126-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:137:17-138:54
+127                    android:host="@string/hostName"
+127-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:138:21-52
+128                    android:scheme="https" />
+128-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:137:23-45
+129            </intent-filter>
+130        </activity>
+131        <activity android:name="com.google.androidbrowserhelper.trusted.FocusActivity" />
+131-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:144:9-90
+131-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:144:19-87
+132        <activity
+132-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:146:9-147:62
+133            android:name="com.google.androidbrowserhelper.trusted.WebViewFallbackActivity"
+133-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:146:19-97
+134            android:configChanges="orientation|screenSize" />
+134-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:147:13-59
+135
+136        <provider
+136-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:149:9-157:20
+137            android:name="androidx.core.content.FileProvider"
+137-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:150:13-62
+138            android:authorities="@string/providerAuthority"
+138-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:151:13-60
+139            android:exported="false"
+139-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:153:13-37
+140            android:grantUriPermissions="true" >
+140-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:152:13-47
+141            <meta-data
+141-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:154:13-156:53
+142                android:name="android.support.FILE_PROVIDER_PATHS"
+142-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:155:17-67
+143                android:resource="@xml/filepaths" />
+143-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:156:17-50
+144        </provider>
+145
+146        <service
+146-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:159:9-174:19
+147            android:name="localhost_5500.twa.DelegationService"
+147-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:160:13-46
+148            android:enabled="@bool/enableNotification"
+148-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:161:13-55
+149            android:exported="@bool/enableNotification" >
+149-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:162:13-56
+150            <meta-data
+150-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:165:17-167:73
+151                android:name="android.support.customtabs.trusted.SMALL_ICON"
+151-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:166:21-81
+152                android:resource="@drawable/ic_notification_icon" />
+152-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:167:21-70
+153
+154            <intent-filter>
+154-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:170:13-173:29
+155                <action android:name="android.support.customtabs.trusted.TRUSTED_WEB_ACTIVITY_SERVICE" />
+155-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:171:17-105
+155-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:171:25-103
+156
+157                <category android:name="android.intent.category.DEFAULT" />
+157-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:135:17-76
+157-->C:\Cursos\Javascript-Awp\Oct-2022\59532-Lu-No\clase-siete\app\src\main\AndroidManifest.xml:135:27-73
+158            </intent-filter>
+159        </service>
+160    </application>
+161
+162</manifest>

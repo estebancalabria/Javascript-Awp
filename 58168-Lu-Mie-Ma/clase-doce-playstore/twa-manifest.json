@@ -1,0 +1,42 @@
+{
+  "packageId": "todolistid.sds.dsds.dsd",
+  "host": "exaple.com",
+  "name": "La mejor todo List",
+  "launcherName": "Todo_List",
+  "display": "standalone",
+  "themeColor": "#35F6D7",
+  "navigationColor": "#000000",
+  "navigationColorDark": "#000000",
+  "navigationDividerColor": "#000000",
+  "navigationDividerColorDark": "#000000",
+  "backgroundColor": "#4A90E2",
+  "enableNotifications": true,
+  "startUrl": "/index.html",
+  "iconUrl": "http://127.0.0.1:5500/images/icon-512x512.png",
+  "maskableIconUrl": "http://127.0.0.1:5500/images/icon-512x512.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "C:\\Cursos\\Javascript-Awp\\58168-Lu-Mie-Ma\\clase-doce-playstore\\android.keystore",
+    "alias": "android"
+  },
+  "appVersionName": "1",
+  "appVersionCode": 1,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "http://127.0.0.1:5500/manifest.json",
+  "fallbackType": "customtabs",
+  "features": {},
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "http://127.0.0.1:5500/",
+  "minSdkVersion": 19,
+  "orientation": "default",
+  "fingerprints": [],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "appVersion": "1"
+}

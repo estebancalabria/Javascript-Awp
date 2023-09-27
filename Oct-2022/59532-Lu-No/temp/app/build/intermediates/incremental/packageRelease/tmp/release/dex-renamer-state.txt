@@ -1,0 +1,4 @@
+#Tue Dec 06 00:31:12 ART 2022
+base.0=C\:\\Cursos\\Javascript-Awp\\Oct-2022\\59532-Lu-No\\temp\\app\\build\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
+renamed.0=classes.dex
+path.0=classes.dex

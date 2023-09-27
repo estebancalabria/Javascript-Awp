@@ -1,0 +1,42 @@
+{
+  "packageId": "localhost_5500.twa",
+  "host": "1238-38-50-98-231.sa.ngrok.io",
+  "name": "Demo PWA",
+  "launcherName": "Demo_PWA",
+  "display": "standalone",
+  "themeColor": "#F69435",
+  "navigationColor": "#000000",
+  "navigationColorDark": "#000000",
+  "navigationDividerColor": "#000000",
+  "navigationDividerColorDark": "#000000",
+  "backgroundColor": "#F69435",
+  "enableNotifications": true,
+  "startUrl": "/index.html",
+  "iconUrl": "http://localhost:5500/img/icon-512x512.png",
+  "maskableIconUrl": "http://localhost:5500/img/icon-512x512.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "C:\\Cursos\\Javascript-Awp\\Oct-2022\\59532-Lu-No\\temp\\android.keystore",
+    "alias": "android"
+  },
+  "appVersionName": "1",
+  "appVersionCode": 1,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "http://localhost:5500/manifest.json",
+  "fallbackType": "customtabs",
+  "features": {},
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": true,
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "http://localhost:5500/",
+  "minSdkVersion": 19,
+  "orientation": "portrait",
+  "fingerprints": [],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "appVersion": "1"
+}

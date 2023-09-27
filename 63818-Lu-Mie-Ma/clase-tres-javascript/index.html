@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <style>
+        header>h1 {
+            font-size: 5vw;
+        }
+
+        * {
+            font-size: 2.5vw;
+        }
+
+        button{
+            text-shadow: 1px 1px 2px black;
+        }
+    </style>
+    <script src="node_modules/sweetalert2/dist/sweetalert2.all.js"></script>
+    <script src="./js/scripts.js"></script>
+</head>
+
+<body>
+    <header class="alert alert-info text-center">
+        <h1>My Awesome PWA Todo List</h1>
+    </header>
+    <main class="container">
+
+        <ul class="list-group shadow">
+            <li class="list-group-item active">Mis tareas....</li>
+            <li class="list-group-item ">
+                <div class="input-group">
+                    <input type="text" class="form-control" placeholder="Nueva tarea..." />
+                    <button class="btn btn-outline-primary">+</button>
+                </div>
+            </li>
+            <li class="list-group-item">
+                Hacer la cama
+                <button class="btn btn-danger float-end" onclick="eliminarTarea(event)">
+                    &#128465;&#65039;
+                </button>
+            </li>
+            <li class="list-group-item">
+                Lavar los platos
+                <button class="btn btn-danger float-end">&#128465;&#65039;</button>
+            </li>
+            <li class="list-group-item">
+                Preparar el almuerzo
+                <button class="btn btn-danger float-end">
+                    &#128465;&#65039;
+                </button>
+            </li>
+        </ul>
+    </main>
+    <script>
+        //alert(document.querySelector("ul")); //dice aca no dice null 
+    </script>
+</body>
+
+</html>

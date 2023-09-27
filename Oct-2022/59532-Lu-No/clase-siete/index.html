@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f69435">
+
+    <title>PWA Demo</title>
+    <link rel="manifest" href="manifest.json" >
+    <link rel="apple-touch-icon" href="/img/icon-192x192.png">
+    <script>
+        var serviceWorkerRegistration = null;
+        navigator.serviceWorker.register("sw.js").then((reg) => {
+            console.log("Service Worker Registered!");
+            serviceWorkerRegistration = reg;
+
+            navigator.serviceWorker.addEventListener("message", (msg) => {
+                //console.log("Mensaje desde el SW");
+                //console.log(msg.data);
+                let li = document.createElement("li");
+                li.innerHTML = ` <b>${msg.data.sender}</b>  ${msg.data.texto}`
+                document.querySelector("ul").appendChild(li);
+            });
+        })
+    </script>
+</head>
+
+<body>
+    <button id="fetch">Fetch</button>
+    <script>
+        document.querySelector("#fetch").addEventListener("click", () => {
+            fetch("index.html").then((r) => (r.text())).then((b) => {
+                //no hago nada
+            })
+        })
+    </script>
+    <div>
+        <input id="msgContent" type="text" placeholder="Mensaje al SW" />
+        <button id="msg2sw">
+            Mandar Mensaje al Service Worker
+        </button>
+        <script>
+            document.querySelector("#msg2sw").addEventListener("click", () => {
+                serviceWorkerRegistration.active.postMessage({ 
+                    texto: document.querySelector("#msgContent").value 
+                });
+            })
+        </script>
+    </div>
+    <ul id="chat">
+
+    </ul>
+
+</body>
+
+</html>

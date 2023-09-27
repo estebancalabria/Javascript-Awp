@@ -1,4 +1,4 @@
-{
+/*{
     "liveServer.settings.port": 5501,
     "liveServer.settings.root": "/",
     "liveServer.settings.CustomBrowser": "chrome",
@@ -9,5 +9,5 @@
       "passphrase": "holaquetal"
     },
     "liveServer.settings.AdvanceCustomBrowserCmdLine" : "chrome --user-data-dir=c:/temp/chrome --ignore-certificate-errors --unsafely-treat-insecure-origin-as-secure=https://127.0.0.1:5501"
-}
+}*/
   
