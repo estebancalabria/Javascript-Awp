@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rick And Morty Api</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <script>
+
+        class Card {
+            imagen;
+            titulo;
+            texto;
+
+            constructor(imagen, titulo, texto) {
+                this.imagen = imagen;
+                this.titulo = titulo;
+                this.texto = texto;
+            }
+
+            toString() {
+                return `<div class="col-3">
+                  <div class="card w-100">
+                    <img class="card-img-top" src="${this.imagen}" alt=".." />
+                    <h3 class="card-title text-center">${this.titulo}</h3>
+                    <div class="card-body">
+                        <p class="card-text text-center">${this.texto}</p>
+                    </div>
+                </div>
+                </div>`
+            }
+        }
+
+        function showPersonajes(personajes) {
+            let row = document.querySelector(".row");
+            row.innerHTML = "";
+            for (let res of personajes) {
+                let carta = new Card(res.image, res.name, res.status);
+                row.innerHTML += carta;
+            }
+
+        }
+
+        async function updateOnlineStatus() {
+            document.getElementById("onlineStatus").innerHTML = navigator.onLine
+                ? "<span style='color:green'>Online</span>"
+                : "<span style='color:red'>Offline<span>";
+                    
+            let personajes = [];
+
+            if (navigator.onLine) {
+                let res = await fetch("https://rickandmortyapi.com/api/character");
+                let data = await res.json();
+                personajes = data.results;
+            } else {
+                if (localStorage.getItem("personajes")){
+                    personajes = JSON.parse(localStorage.getItem("personajes"));
+                };    
+    
+            }
+
+            showPersonajes(personajes);
+
+        }
+
+        window.addEventListener("load", () => {
+            /*fetch("https://rickandmortyapi.com/api/character")
+                .then((res) => (res.json()))
+                .then((data) => {
+                });*/
+
+            fetch("https://rickandmortyapi.com/api/character?page=2")
+                .then((res) => (res.json()))
+                .then((data) => {
+                    if (!localStorage.getItem("personajes")) {
+                        localStorage.setItem("personajes", JSON.stringify(data.results));
+                    }
+                });
+                localStorage.setItem("imagen",document.getElementById("desconocido").src);
+
+            updateOnlineStatus();
+        })
+
+        window.addEventListener("online",()=>{ updateOnlineStatus()});
+        window.addEventListener("offline",()=>{ updateOnlineStatus()});
+    </script>
+</head>
+
+<body>
+    <header class="alert alert-info text-center">
+        <h1>Llamada Asincronica</h1>
+        <div id="onlineStatus" class="text-end">
+            [onlineStatus]
+        </div>
+    </header>
+    <img id="desconocido" src="./desconocido.webp" style="display: none;" />
+    <main class="container">
+        <div class="row">
+
+        </div>
+    </main>
+</body>
+
+</html>
