@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi primer service Worker</title>
+    <script>
+        //nos fijamos si el navegador tiene soporte
+        if (navigator.serviceWorker) {
+            navigator.serviceWorker.register("sw.js").then((evt) => {
+                console.log("Sw Instalado");
+                console.log(evt);
+                document.getElementById("sw-install").innerText = "Service Worker Instalado...";
+            }).catch((err) => {
+                console.error("Error instalando Service Worker");
+                console.error(err);
+                document.getElementById("sw-install").innerText = "Error instalando Service Worker";
+                document.getElementById("sw-install").style.color = "red";
+            })
+        }
+
+        function actualizarEstadoAplicacion() {
+            document.getElementById("estado-aplicacion").innerText = navigator.onLine
+                ? "La apliacacion esta online"
+                : "La apliacacion esta offline";
+            
+            document.getElementById("estado-aplicacion").style.color = navigator.onLine ? "green" : "red";
+        }
+
+        window.addEventListener("load",()=>{
+            actualizarEstadoAplicacion();
+            window.addEventListener("online", actualizarEstadoAplicacion);
+            window.addEventListener("offline", actualizarEstadoAplicacion);
+        });
+
+
+    </script>
+</head>
+
+<body>
+    <h1>Mi Primer Service Worker</h1>
+    <div id="sw-install">
+        Instalando service Worker...
+    </div>
+    <div id="estado-aplicacion">
+
+    </div>
+</body>
+
+</html>
