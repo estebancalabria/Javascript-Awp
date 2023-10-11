@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#ffffff">
+    <title>AWP Demo</title>
+    <link rel="manifest" href="manifest.json">
+    <script>
+        if (navigator.serviceWorker){
+            navigator.serviceWorker.register("sw.js").then((reg)=>{
+                document.getElementById("status").innerText = "Service Worker Registrado";
+            })
+        }
+    </script>
+    <style>
+        html, body {
+            height: 100%;
+        }
+
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <h1>AWP Demo</h1>
+        <div id="status"></div>
+    </main>
+</body>
+</html>
