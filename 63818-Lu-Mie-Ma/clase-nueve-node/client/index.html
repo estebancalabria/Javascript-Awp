@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        navigator.serviceWorker
+            && navigator.serviceWorker.register("sw.js").then((reg) => {
+                console.log("SW registrado");
+            });
+
+        window.addEventListener("load", () => {
+            window.Notification.requestPermission().then((perm) => {
+                console.log(perm);
+            });
+        });
+    </script>
+</head>
+
+<body>
+
+    <button>
+        Mostrar Notificacion
+    </button>
+    <script>
+        document.querySelector("button").addEventListener("click", () => {
+            navigator.serviceWorker.ready.then((reg) => {
+                //console.log(reg.showNotification);
+                reg.showNotification("Hola", {
+                    body : "Hola",
+                    image : "./img/noti.png"
+                });
+            })
+            //alert(navigator.serviceWorker.registration);
+            //console.log(navigator.serviceWorker);
+            //navigator.serviceWorker.registration.showNotification("Hola");
+        })
+    </script>
+
+</body>
+
+</html>

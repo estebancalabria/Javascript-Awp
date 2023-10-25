@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#FFFFFF">
+    <link rel="manifest" href="manifest.json">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <title>Mi Pagina AWP</title>
+    <script>
+        navigator.serviceWorker && navigator.serviceWorker.register("sw.js").then((reg)=>{
+            document.getElementById("console").innerHTML += `<p>Service Worer Registrado</p>`
+
+            
+            
+            navigator.serviceWorker.addEventListener("message", (msg)=>{
+                document.getElementById("console").innerHTML += `<p>${JSON.stringify(msg.data)}</p>`
+            })            
+        })
+
+        function updateOnlineStatus() {
+            document.getElementById("onlineStatus").innerHTML = navigator.onLine
+                ? "<span style='color:green'>Online</span>"
+                : "<span style='color:red'>Offline<span>";
+
+        }
+
+        window.addEventListener("load", () => {
+            updateOnlineStatus();
+        })
+
+        window.addEventListener("online",()=>{ updateOnlineStatus()});
+        window.addEventListener("offline",()=>{ updateOnlineStatus()});
+
+    </script>
+</head>
+<body>
+    <div id="onlineStatus" class="alert alert-info text-end">
+
+    </div>
+
+    <button class="btn btn-primary">
+        Mandar Mensaje al Service Worker
+    </button>
+    <script>
+        document.querySelector("button").addEventListener("click",()=>{
+            navigator.serviceWorker.ready.then((reg)=>{
+                reg.active.postMessage({payload : `Mensaje desde la pagina ${new Date()}`});
+            })
+        })
+    </script>
+
+    <section id="console" class="bg-dark text-light fixed-bottom" style="max-height: 15em;">
+        <h2>Consola</h2>
+    </section>
+</body>
+</html>
