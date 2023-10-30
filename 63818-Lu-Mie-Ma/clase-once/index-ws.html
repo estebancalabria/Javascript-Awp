@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.addEventListener("load", () => {
+            const wsurl = "wss://socketsbay.com/wss/v2/1/demo/"
+            let socket;
+
+            document.querySelector("#connect").addEventListener("click", () => {
+                socket = new WebSocket(wsurl);
+                socket.addEventListener("open", ()=>{
+                    console.log("Web Socket Conectado");
+                });
+
+                socket.addEventListener("close", ()=>{
+                    console.log("Web Socket Cerrado");
+                });
+
+                socket.addEventListener("message", (msg)=>{
+                    console.log("Mensaje Recibido Web Socket");
+                    console.log(msg);
+                });
+
+                socket.addEventListener("error", (err)=>{
+                    console.log("Error");
+                    console.log(err);
+                });
+            });
+
+            document.querySelector("#send").addEventListener("click", () => {
+                socket.send("Esto es una prueba");
+            });
+        });
+
+    </script>
+</head>
+
+<body>
+    <button id="connect">Conectar Web Sockets</button>
+    <button id="send">Mandar Info</button>
+</body>
+
+</html>

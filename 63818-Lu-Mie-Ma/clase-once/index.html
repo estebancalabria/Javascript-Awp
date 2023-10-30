@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .map-responsive {
+            overflow: hidden;
+            padding-bottom: 30%;
+            position: relative;
+            height: 0;
+        }
+
+        .map-responsive iframe {
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 100%;
+            position: absolute;
+        }
+    </style>
+    <script>
+
+        function getCurrentPositionCallback(position) {
+            console.log(position);
+            document.querySelector("#currentLocation").innerHTML = `
+                <div>
+                    <div>Latitud : ${position.coords.latitude}</div>
+                    <div>Longitud : ${position.coords.longitude}</div>
+                </div>
+            `;
+
+            document.querySelector("#frameGoogleMaps").src = `
+            https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1642.0130466569462!2d${position.coords.longitude}!3d${position.coords.latitude}!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95bcca0db717f7a5%3A0x2e3fc8d2ef609087!2sMiUbicacion!5e0!3m2!1ses-419!2sar!4v1698673416500!5m2!1ses-419!2sar
+            `;
+
+            
+
+            document.querySelector("#frameOpenStreetsMap").src = "https://www.openstreetmap.org/export/embed.html?bbox=-58.72879028320313%2C-34.75454269815556%2C-58.26187133789063%2C-34.467458250742474&amp;layer=mapnik&amp;marker=-34.611124566398004%2C-58.495330810546875";
+            /*`
+                https://www.openstreetmap.org/export/embed.html?bbox=-58.72879028320313%2C-34.75454269815556%2C-58.26187133789063%2C-34.467458250742474&amp;layer=mapnik&amp;marker=-34.6010516%2C-58.4287612
+            `;*/
+        }
+
+        window.addEventListener("load", () => {
+            document.querySelector("#btnUbicacionActual").addEventListener("click", () => {
+                if (navigator.geolocation) {
+                    navigator.geolocation.getCurrentPosition(getCurrentPositionCallback);
+                }
+            })
+        })
+    </script>
+</head>
+
+<body>
+    <div id="currentLocation"></div>
+    <button id="btnUbicacionActual">
+        Obtener Ubicacion Actual
+    </button>
+
+    <div>
+        <iframe id="frameOpenStreetsMap" width="425" height="350" 
+        src="https://www.openstreetmap.org/export/embed.html?bbox=-58.72879028320313%2C-34.75454269815556%2C-58.26187133789063%2C-34.467458250742474&amp;layer=mapnik&amp;marker=-34.611124566398004%2C-58.495330810546875"
+        style="border: 1px solid black"></iframe>
+    </div>
+
+
+    <div class="map-responsive">
+        <iframe id="frameGoogleMaps"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12843273.87983452!2d-92.30333414602946!3d43.073810039047665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c24fa5d33f083b%3A0xc80b8f06e177fe62!2sNew+York%2C+NY%2C+USA!5e0!3m2!1sen!2ssi!4v1563604338825!5m2!1sen!2ssi            width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+</body>
+
+</html>
