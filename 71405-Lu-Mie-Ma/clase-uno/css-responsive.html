@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.addEventListener("load", function () {
+            document.getElementById("ancho").innerHTML = window.innerWidth;
+            window.addEventListener("resize", function () {
+                document.getElementById("ancho").innerHTML = window.innerWidth;
+            });
+        });
+    </script>
+    <style>
+        header{
+            background-color: blue;
+            color: white;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .row{
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .row>div {
+            width: 100%;
+            background-color: red;
+            padding: 10px;
+        }
+    
+        @media (min-width: 600px) {
+            .row>div {
+                width: 47%;
+            }
+        }
+
+        @media (min-width: 990px) {
+            .row>div {
+                width: 30%;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Aplicacion de CSS Responsive con Media Queries</h1>
+    </header>
+
+    <div class="">
+        <div id="ancho">Ancho:</div>
+
+        <div class="row">
+            <div class="">
+                Columna 1
+            </div>
+
+            <div class="">
+                Columna 2
+            </div>
+
+            <div class="">
+                Columna 3
+            </div>
+
+            <div class="">
+                Columna 4
+            </div>
+        </div>
+    </div>
+</body>
+</html>
