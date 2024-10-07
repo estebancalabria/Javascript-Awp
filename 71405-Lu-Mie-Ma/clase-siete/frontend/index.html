@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <!--Instalo estilos bootstrap de node modules-->
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script>
+
+        function $notify(message){
+            const notificaciones = document.getElementById("notificaciones");
+            notificaciones.innerHTML = message;
+        }
+
+        window.addEventListener("load", async ()=>{
+            //registro el serivice worker
+            if("serviceWorker" in navigator){
+                try{
+                    $notify("Registrando Service Worker")
+                    const registracion = await navigator.serviceWorker.register("sw.js");
+
+                    registracion.installing && registracion.installing.addEventListener("statechange", (event)=>{
+                        $notify(`Service Worker estado: ${event.target.state}`)
+                    });
+
+                    registracion.waiting && $notify("Service Worker en espera...") && registracion.waiting.addEventListener("statechange", (event)=>{
+                        $notify(`Service Worker estado: ${event.target.state}`)
+                    });
+
+                    registracion.active && $notify("Service Worker ya estaba activo");
+                    
+                    console.log("Service Worker registrado")
+                }catch(error){
+                    console.log("Service Worker no registrado " + error)
+                }
+            }
+        });
+        
+        let todo_list = [];
+
+        function listChanged(old_list, new_list){
+            if (old_list.length != new_list.length){
+                return true;
+            }
+            for (let i = 0; i < old_list.length; i++){
+                if (!(old_list[i].description === new_list[i].description)){
+                    return true;
+                }
+            }
+            return false;
+        }   
+
+        async function update_list(){
+            try{
+                
+                let resp = await fetch("http://localhost:3000/tasks");
+                let data = await resp.json();
+
+                if (listChanged(todo_list, data)){
+                    todo_list = data;
+                    render_list();
+                }
+            } catch (error){
+                //Muestro el error en la lista
+                const todo_list_element = document.getElementById("todo-list");
+                todo_list_element.innerHTML = "";
+                const task_element = document.createElement("li");
+                task_element.className = "list-group-item active";
+                task_element.innerHTML = "Error al cargar la lista de tareas" + error;
+                todo_list_element.appendChild(task_element);
+            }
+        }
+
+        function render_list(){
+            const todo_list_element = document.getElementById("todo-list");
+            todo_list_element.innerHTML = "";
+            
+            //Cargo la cabecera
+            const task_element = document.createElement("li");
+            task_element.className = "list-group-item active";
+            task_element.innerHTML = "Lista de Tareas";
+            todo_list_element.appendChild(task_element);
+
+            //Cargo los items
+            todo_list.forEach((task, index) => {
+                const task_element = document.createElement("li");
+                task_element.className = "list-group-item";
+                /*task_element.innerHTML = `
+                    <input type="checkbox" ${task.done ? "checked" : ""} onchange="toggle_task(${index})">
+                    <span>${task.description}</span>
+                    <button class="btn btn-danger" onclick="delete_task(${index})">X</button>
+                `;*/
+                task_element.innerHTML = `
+                    <span>${task.description}</span>
+                `;
+
+                todo_list_element.appendChild(task_element);
+            });
+        }
+
+        //Seria bueno que no haya que recargar la pagina para ver los cambios
+        //Lo vamos a mejorar con notificaciones push
+        setInterval(update_list, 3000);
+
+        
+    </script>
+</head>
+<body>
+    <header class="alert alert-success mb-0">
+        <h1 class="text-center">Curso AWP : Todo List</h1>
+    </header>
+    
+    <section id="notificaciones" class="text-end text-bold alert alert-primary fw-bold">
+        Notificaciones...
+    </section>
+
+    <main>
+        <div class="w-50 mx-auto">
+            <ul id="todo-list" class="list-group">
+                <li class="list-group active">Cargando lista de tareas....</li>
+            </ul>
+        </div>
+    </main>
+    
+</body>
+</html>
