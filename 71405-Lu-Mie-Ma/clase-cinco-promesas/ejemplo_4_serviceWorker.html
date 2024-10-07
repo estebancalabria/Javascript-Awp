@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=\, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <h1>Service Worker y Promesas</h1>
+    </header>
+    <hr />
+    <button id="btnRegSw1">Registrar Service Worker que devuelve Response</button>
+    <button id="btnRegSw2">Registrar Service Worker que devuelve Promise</button>
+    <button id="btnFetch"> Hacer un fetch que pase por el Service Worker</button>
+    <div id="divFetch">
+        Aca se muestra la respuesta del service worker
+    </div>
+    <script>
+        document.getElementById('btnRegSw1').addEventListener('click', async function () {
+            if ('serviceWorker' in navigator) {
+                try {
+                    let registration = await navigator.serviceWorker.register('ejemplo_4_sw_response.js');
+                    console.log('Service Worker registrado correctamente', registration);
+                } catch (error) {
+                    console.error('Error al registrar el Service Worker', error);
+                }
+            } else {
+                console.error('Service Worker no soportado en este navegador');
+            }
+        });
+
+        document.getElementById('btnRegSw2').addEventListener('click', async function () {
+            if ('serviceWorker' in navigator) {
+                try {
+                    let registration = await navigator.serviceWorker.register('ejemplo_4_sw_promise.js');
+                    console.log('Service Worker registrado correctamente', registration);
+                } catch (error) {
+                    console.error('Error al registrar el Service Worker', error);
+                }
+            } else {
+                console.error('Service Worker no soportado en este navegador');
+            }
+        });
+
+        document.getElementById('btnFetch').addEventListener('click', async function () {
+            let url = 'sandbox.html';
+            try {
+                let response = await fetch(url);
+                let data = await response.text();
+                document.getElementById('divFetch').innerHTML = data;
+            } catch (error) {
+                console.error(error);
+            }
+        });
+    </script>
+</body>
+</html>

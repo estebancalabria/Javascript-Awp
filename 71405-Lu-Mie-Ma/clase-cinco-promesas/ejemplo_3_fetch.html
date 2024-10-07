@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //Nuestra version del fetch
+        function get(url) {
+            return new Promise(function (resolve, reject) {
+                fetch(url)
+                    .then(function (response) {
+                        return response.json();
+                    })
+                    .then(function (data) {
+                        resolve(data);
+                    })
+                    .catch(function (error) {
+                        reject(error);
+                    });
+            });
+        }
+
+        //O bien la version con async await
+        async function asyng_get(url) {
+            try {
+                let response = await fetch(url);
+                let data = await response.json();
+                return data;
+            } catch (error) {
+                console.error(error);
+            }
+        }
+    </script>
+</head>
+<body>
+    <input type="text" id="txtUrl" value="https://jsonplaceholder.typicode.com/posts/1">
+    <button id="btnFetch">Fetch</button>
+    <div id="divFetch"></div>
+    <script>
+        document.getElementById('btnFetch').addEventListener('click', async function () {
+            let url = document.getElementById('txtUrl').value;
+            //Puedo usar get o asyng_get cualquiera de las dos
+            let data = await asyng_get(url);
+            //let data = await get(url); 
+            document.getElementById('divFetch').innerHTML = JSON.stringify(data);
+        });
+    </script>
+</body>
+</html>

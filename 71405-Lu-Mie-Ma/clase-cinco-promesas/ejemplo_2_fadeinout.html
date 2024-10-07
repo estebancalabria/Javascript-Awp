@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        //Lo voy a usar varias veces
+        var sleep = function (ms) {
+            return new Promise(function (resolve, reject) {
+                setTimeout(resolve, ms);
+            });
+        }
+
+
+        //Esto es un ejemplo, en realidad se haria con css
+        async function fadeIn(element, ms) {
+            element.style.opacity = 0;
+            element.style.display = 'block';
+            for (let i = 0; i <= 1; i += 0.01) {
+                element.style.opacity = i;
+                await sleep(ms);
+             }   
+        }
+
+        async function fadeOut(element, ms) {
+            element.style.opacity = 1;
+            for (let i = 1; i >= 0; i -= 0.01) {
+                element.style.opacity = i;
+                await sleep(ms);
+            }
+            element.style.display = 'none';
+        }
+    </script>
+</head>
+<body>
+
+    <button id="btnEjemplo1_fadeIn">fadeIn</button>
+    <button id="btnEjemplo1_fadeOut">fadeOut</button>
+    <script>
+        document.getElementById('btnEjemplo1_fadeIn').addEventListener('click', function () {
+            fadeIn(document.getElementById('divEjemplo1'), 30);
+        });
+
+        document.getElementById('btnEjemplo1_fadeOut').addEventListener('click', function () {
+            fadeOut(document.getElementById('divEjemplo1'), 30);
+        });
+    </script>
+
+    <div id="divEjemplo1" style="display:none; width: 200px; height: 200px; background-color: red;">
+        <h1>Este es un ejemplo de fadeIn y fadeOut</h1>
+    </div>
+</body>
+</html>

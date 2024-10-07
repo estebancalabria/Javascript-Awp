@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script>
+        //Lo voy a usar varias veces
+        var sleep = function (ms) {
+            return new Promise(function (resolve, reject) {
+                setTimeout(resolve, ms);
+            });
+        }
+
+    </script>
+</head>
+
+<body>
+    <header>
+        <h1>Promesas en Javascript!</h1>
+    </header>
+    <hr />
+
+    <h2>Ejemplo 1 Asincronico - Callback - setTimeOut</h2>
+    <button id="btnEjemplo1_timer">Empezar el timer</button>
+    <p id="txtEjemplo1_timer">Presione el boton para iniciar el timer...</p>
+    <script>
+        document.getElementById('btnEjemplo1_timer').addEventListener('click', function () {
+            document.getElementById('txtEjemplo1_timer').innerHTML = 'Esperando que finalice el timer...';
+
+            //Un callback es una funcion que se ejecuta despues de un tiempo determinado
+
+            setTimeout(function () {
+                document.getElementById('txtEjemplo1_timer').innerHTML = 'Timer finalizado!';
+            }, 3000);
+        });
+    </script>
+
+    <hr />
+
+    <h2>Ejemplo 2 Asincronico - Promesas - setTimeOut</h2>
+    <p>Las promesas son objetos que representan la terminacion o el fracaso de una operacion asincronica </p>
+    <p>Es una forma de trabajar con codigo asincronico de una forma mas limpia y ordenada</p>
+    <p>A diferencia de los callback que se pueden volver un infierno de codigo</p>
+
+    <button id="btnEjemplo2_timer_promesas">Empezar el timer</button>
+    <p id="txtEjemplo2_timer_promesas">Presione el boton para iniciar el timer...</p>
+
+    <script>
+        document.getElementById('btnEjemplo2_timer_promesas').addEventListener('click', function () {
+            document.getElementById('txtEjemplo2_timer_promesas').innerHTML = 'Esperando que finalice el timer...';
+
+            //Un callback es una funcion que se ejecuta despues de un tiempo determinado
+            //Las promesas se crean con la clase Promise
+            //La promesa recibe una funcion con dos parametros resolve y reject
+            //resolve se ejecuta cuando la promesa se cumple
+            //reject se ejecuta cuando la promesa no se cumple
+
+            sleep(3000)
+                .then(function () {
+                    document.getElementById('txtEjemplo2_timer_promesas').innerHTML = 'Timer finalizado!';
+                })
+                .catch(() => { console.log("Esto nunca se va a ejecutar") });
+        });
+    </script>
+
+    <hr />
+
+    <h2>Ejemplo 2 Asincronico - Promesas - Con async/await setTimeOut</h2>
+
+    <button id="btnEjemplo3_timer_asyncawait">Empezar el timer</button>
+    <p id="txtEjemplo3_timer_asyncawait">Presione el boton para iniciar el timer...</p>
+
+    <script>
+        //Si se quiere encadenar varios callback nos queda un codigo muy dificil de leer anidado
+        //Ejemplo:
+        // setTimeout(function () {
+        //     setTimeout(function () {
+        //         setTimeout(function () {
+        //             setTimeout(function () {
+        //                 setTimeout(function () { ... }, 1000);
+        // Callbak Hell
+        // Con async/await se puede hacer de una forma mas limpia y ordenada
+
+        //Prestar atencion al async y al await
+        document.getElementById('btnEjemplo3_timer_asyncawait').addEventListener('click', async function () {
+            try{
+                document.getElementById('txtEjemplo3_timer_asyncawait').innerHTML = 'Esperando que finalice el timer 1 vez...';
+                await sleep(3000); //El await reemplaza al then
+                document.getElementById('txtEjemplo3_timer_asyncawait').innerHTML = 'Esperando que finalice el timer 2 vez...';
+                await sleep(3000);
+                document.getElementById('txtEjemplo3_timer_asyncawait').innerHTML = 'Esperando que finalice el timer 3 vez...';
+                await sleep(3000);
+                document.getElementById('txtEjemplo3_timer_asyncawait').innerHTML = 'Timer finalizado!';
+            }catch(e){
+                //Este codigo no se va a ejecutar nunca
+                console.log("Error: ", e);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

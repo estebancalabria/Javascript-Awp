@@ -1,0 +1,103 @@
+<!--
+    Resumen temas de la clase a presta atencion
+      -- navigator.onLine 
+      -- Eventos online y offline
+      -- localStorage
+      -- Yapa: async/await
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #onlineStatus {
+            text-align: right;
+            color: red;
+        }
+    </style>
+    <script>
+        function updateOnlineStatus(event) {
+            // navigator.onLine se usa en una pwa para saber si el usuario esta conectado a internet
+            var onlineStatus = navigator.onLine ? "Online" : "Offline";
+            var status = document.getElementById("onlineStatus");
+            status.innerHTML =  onlineStatus ;
+            status.style.color = navigator.onLine ? "green" : "red";
+        }
+
+        let tareas = [];
+
+        async function updateListaTareasFromNetwork(){
+            response = await fetch("http://localhost:3000/tareas")
+            json = await response.json();
+            tareas = json;
+            localStorage.setItem("tareas", JSON.stringify(tareas));
+            //Mustestro que viene de Internet
+            document.getElementById("listaDeTareasSource").innerHTML = "Lista de Tareas desde Internet";
+        }
+
+        function updateListaTareasFromLocalStorage(){
+            tareas = JSON.parse(localStorage.getItem("tareas"));
+            //Muestro que viene de LocalStorage
+            document.getElementById("listaDeTareasSource").innerHTML = "Lista de Tareas desde LocalStorage";
+        }
+
+        async function updateAndShowListaTareas(){
+            if(navigator.onLine){
+                await updateListaTareasFromNetwork();
+            }else{
+                updateListaTareasFromLocalStorage();
+            }
+            showListaTareas();
+        }
+
+        function showListaTareas(){
+            var ul = document.getElementById("ulListaTareas");
+            ul.innerHTML = "";
+            tareas.forEach(tarea => {
+                var li = document.createElement("li");
+                li.innerHTML = tarea.tarea;
+                ul.appendChild(li);
+            });
+        }
+
+        window.addEventListener("load",async ()=>{
+            updateOnlineStatus();
+            window.addEventListener("online", updateOnlineStatus);
+            window.addEventListener("offline", updateOnlineStatus);
+
+            await updateAndShowListaTareas();
+        });
+
+        //Instalacion del Service Worker
+        if (navigator.serviceWorker) {
+            navigator.serviceWorker.register("sw.js").then(reg => {
+                console.log("SW registrado con éxito", reg);
+            }).catch(err => {
+                console.log("SW no registrado", err);
+            });
+        }
+
+    </script>
+</head>
+<body>
+    <header>
+        <div>
+            <h1>AWP Clase Cuatro</h1>
+            <h4 id="onlineStatus">
+                [Offline / Online]
+            </h4>
+        </div>
+    </header>
+    <hr />
+    <hr />
+
+    <div id="listaDeTareasSource">Recuperando Lista de Tareas...</div>
+    <ul id="ulListaTareas">
+
+    </ul>
+    
+    
+</body>
+</html>

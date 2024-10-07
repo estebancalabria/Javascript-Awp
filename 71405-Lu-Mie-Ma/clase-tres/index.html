@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script>
+        if (navigator.serviceWorker) {
+            navigator.serviceWorker.register("sw.js").then(reg => {
+                console.log("SW registrado con éxito", reg);
+            }).catch(err => {
+                console.log("SW no registrado", err);
+            });
+        }
+
+    </script>
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Bienvenido a mi primer PWA</h1>
+
+    <input type="url" placeholder="Ingrese la url a hacer fetch" />
+    <button>
+        Hacer un fetch
+    </button>
+    <div>
+        <textarea></textarea>
+    </div>
+
+    <script>
+        const button = document.querySelector("button");
+        button.addEventListener("click", ()=>{
+            const url = document.querySelector("input").value;
+            fetch(url).then( (resp)=>resp.text() ).then((text)=>{
+                document.querySelector("textarea").value = text;
+            });
+        });
+    </script>
+</body>
+
+</html>

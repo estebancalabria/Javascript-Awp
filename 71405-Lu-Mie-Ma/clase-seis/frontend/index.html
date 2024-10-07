@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List con Service Worker</title>
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script>
+        const URL_API = 'http://localhost:3000/tasks';
+
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.js')
+                    .then(registration => {
+                        console.log('Service Worker registrado con éxito:', registration);
+                    })
+                    .catch(error => {
+                        console.log('Error al registrar el Service Worker:', error);
+                    });
+            });
+        }
+
+        async function get_json(url) {
+            let response = await fetch(url);
+            let data = await response.json();
+            return data;
+        }
+
+        async function load_todo_list(){
+            try{
+                let todo_list = await get_json(URL_API);
+                let todo_list_element = document.getElementById('todo-list');
+                todo_list_element.innerHTML = '';
+                todo_list_element.innerHTML += '<li class="list-group-item active">Lista de Tareas</li>';
+                todo_list.forEach(todo => {
+                    todo_list_element.innerHTML += `<li class="list-group-item">${todo.description}</li>`;
+                });
+                //Muestro tambien las que estan en en local storage con alguna indicacion
+                let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+                tasks.forEach(task => {
+                    todo_list_element.innerHTML += `<li class="list-group-item">${task} (offline)</li>`;
+                });
+            } catch(error){
+                //Muestro el error en la lista
+                let todo_list_element = document.getElementById('todo-list');
+                todo_list_element.innerHTML = '';
+                todo_list_element.innerHTML += '<li class="list-group-item active">Lista de Tareas</li>';
+                todo_list_element.innerHTML += `<li class="list-group-item">Error al cargar la lista de tareas de ${URL_API}</li>`;
+            }
+        }
+
+        function mostar_notificacion(mensaje){
+            let notification = document.getElementById('notification');
+            let notification_message = document.getElementById('notification-message');
+            notification_message.innerText = mensaje;
+            notification.classList.remove('d-none');
+            setTimeout(() => {
+                notification.classList.add('d-none');
+            }, 5000);
+        }
+
+        async function add_task_online(params) {
+            try{
+                let response = await fetch(URL_API, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({description: task})
+                });
+
+                if(response.ok){
+                    load_todo_list();
+                } else {
+                    mostar_notificacion('Error al agregar la tarea');
+                }
+            } catch(error){
+                mostar_notificacion('Error al agregar la tarea');
+            }            
+        }
+
+        async function add_task_offline(task){
+            //Guardo la tarea en el localStorage
+            let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            tasks.push(task);
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            mostar_notificacion('Tarea agregada en modo offline');
+        }
+
+        async function add_task(){
+            let task = document.getElementById('task').value;
+            if (task.trim().length === 0) {
+                mostar_notificacion('La tarea no puede estar vacía');
+                return;
+            }
+
+            if (navigator.onLine) {
+                add_task_online(task);
+            } else {
+                add_task_offline(task);
+            }
+
+            //limpio el input
+            document.getElementById('task').value = '';
+        }
+
+        //Cuando cuano vuelvo a estar online, mando las tareas al back
+        window.addEventListener('online', () => {
+            let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
+            tasks.forEach(task => {
+                add_task_online(task);
+            });
+            localStorage.removeItem('tasks');
+        });
+
+        window.addEventListener('load', () => {
+            setTimeout(()=>{
+                load_todo_list();
+            }, 3000);
+        });
+    </script>
+</head>
+
+<body>
+    <header class="alert alert-info">
+        <h1 class="text-center">La Todo List mas fachera</h1>
+    </header>
+    <main class="container">
+
+        <section id="notification" class="alert alert-success d-none">
+            <p id="notification-message"></p>
+        </section>
+        
+        <section class="w-50 mx-auto pt-3">
+            <ul id="todo-list" class="list-group">
+                <li class="list-group-item active">Lista de Tareas</li>
+                <li class="list-group-item">Cargando...</li>
+            </ul>
+            <!--Input con un boton al lado para agregar la tarea-->
+            <div class="input-group mt-3">
+                <input type="text" class="form-control" id="task" placeholder="Nueva tarea">
+                <button class="btn btn-primary" type="button" onclick="add_task()">Agregar</button>
+        </section>
+    </main>
+
+</body>
+
+</html>
